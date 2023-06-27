@@ -2,10 +2,9 @@ package br.com.duarte.library.store.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +16,10 @@ public class Book {
     private String description;
     private Long numberOfPages;
     private Double price;
+    @OneToMany
+    private List<Author> authors = new ArrayList<>();
+
+    public void add(Author author) {
+        authors.add(author);
+    }
 }
